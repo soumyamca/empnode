@@ -1,5 +1,8 @@
 var express=require('express')
 var bodyParser = require('body-parser')
+var mongoose = require('mongoose');
+var {empModel}=require('./models/empModel')
+
 var app=express()
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -14,9 +17,10 @@ app.post('/read',(req,res)=>{
     var getDesig=req.body.desig;
     var getSalary=req.body.salary; 
     var getMob=req.body.mob;
-    res.json({"empname":getEmpname,"empcode": getEmpcode, "desig":getDesig,"salary": getSalary,"mobile": getMob})
+    var empObject=new empModel(req.body);
+    res.json(empObject)
 })
 
-app.listen(process.env.PORT||3007,()=>{
-    console.log("server started at http://localhost:3007/home")
+app.listen(process.env.PORT||3011,()=>{
+    console.log("server started at http://localhost:3011/home")
 })
