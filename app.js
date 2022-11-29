@@ -2,7 +2,7 @@ var express=require('express')
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose');
 var {empModel}=require('./models/empModel')
-
+mongoose.connect("mongodb+srv://soumya123:soumya@123@cluster0.z3rz6s1.mongodb.net/?retryWrites=true&w=majority",{useNewUrlParser:true})
 var app=express()
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -18,7 +18,17 @@ app.post('/read',(req,res)=>{
     var getSalary=req.body.salary; 
     var getMob=req.body.mob;
     var empObject=new empModel(req.body);
-    res.json(empObject)
+    empObject.save(
+        (error)=>{
+            if(error){
+                res.send(error)
+            }
+            else{
+                res.json({"status":success})
+            }
+        }
+    )
+    
 })
 
 app.listen(process.env.PORT||3011,()=>{
