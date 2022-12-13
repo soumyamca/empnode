@@ -2,7 +2,7 @@ var express=require('express')
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose');
 var {empModel}=require('./models/empModel')
-mongoose.connect("mongodb+srv://soumya123:soumya@123@cluster0.z3rz6s1.mongodb.net/?retryWrites=true&w=majority",{useNewUrlParser:true})
+mongoose.connect("mongodb+srv://soumyalijo:soumya123@cluster0.kwbl4rt.mongodb.net/?retryWrites=true&w=majority",{useNewUrlParser:true})
 var app=express()
 app.use(bodyParser.urlencoded({ extended: false }))
 
