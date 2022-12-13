@@ -25,12 +25,13 @@ app.post('/read',(req,res)=>{
             }
             else{
                 res.json({"status":success})
+                res.json(empObject)
             }
         }
     )
     
 })
 
-app.listen(process.env.PORT||3015,()=>{
-    console.log("server started at http://localhost:3015/home")
+app.listen(process.env.PORT||3016,()=>{
+    console.log("server started at http://localhost:3016/home")
 })
